@@ -4,7 +4,7 @@
 #include <cassert>
 #include <algorithm>
 #include "Vector.h"
-#include "Stack.h"
+//#include "Stack.h"
 //#include "Random.h"
 using namespace std;
 // Set ADT implemented exactly like BinaryTree
@@ -209,7 +209,8 @@ public:
                     intersectionSet.insert(*it2);
                 }
             }
-
+            it1++;
+            it2++;
         }
 
         return intersectionSet;
@@ -227,11 +228,26 @@ public:
             if (!contains(*it2)) {
                 differenceSet.insert(*it2);
             }
-
+            it1++;
+            it2++;
         }
         return differenceSet;
     }
 
+    int maxDepth(BinaryNode* root){
+        if (root == nullptr) { //base case
+            return 0;
+       }
+        else {
+            int leftSubTree = maxDepth(root->left);
+            int rightSubTree = maxDepth(root->right);
+
+            if (leftSubTree > rightSubTree)
+                return leftSubTree + 1;
+            else
+                return rightSubTree + 1;
+        }
+    }
 
     //HW End * * * * * * * * * * * * * * * * * * * * * * * * * *
 
