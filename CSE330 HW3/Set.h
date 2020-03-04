@@ -4,7 +4,7 @@
 #include <cassert>
 #include <algorithm>
 #include "Vector.h"
-//#include "Stack.h"
+#include "Stack.h"
 //#include "Random.h"
 using namespace std;
 // Set ADT implemented exactly like BinaryTree
@@ -169,11 +169,12 @@ public:
         while (it1 != end() && it2 != other.end()) { //iterate over every element in both trees                            
 
             if (*it1 == *it2) { //if both elements are the same, insert only one instance
-                if(!unionSet.contains(*it1)) //only insert if no the element is not already included in the set
-                unionSet.insert(*it1);
+                if (!unionSet.contains(*it1)) {//only insert if no the element is not already included in the set
+                    unionSet.insert(*it1);
+                }
             }
             else { //check if either element is already included in the greater set, and if not, insert them
-                if (!unionSet.contains(*it1) {
+                if (!unionSet.contains(*it1)) {
                     unionSet.insert(*it1);
                 }
 
@@ -185,7 +186,7 @@ public:
             it2++;
         }
 
-        return unionset;
+        return unionSet;
 
     }
 
@@ -198,8 +199,9 @@ public:
 
         while (it1 != end() && it2 != other.end()) {
             if (*it1 == *it2) { //if the elements are the same, then follow logic of union
-                if(!intersectionSet.contains(*it1))
-                    intersectionSet.insert(*it1)
+                if (!intersectionSet.contains(*it1)) {
+                    intersectionSet.insert(*it1);
+                }
             }
             //otherwise, we search the other set for the element to see if it is present in both sets
             //if it is found, we confirm that the element is not already in the set, and if it is not, we insert it
@@ -234,7 +236,11 @@ public:
         return differenceSet;
     }
 
-    int maxDepth(BinaryNode* root){
+    int getMaxDepth() {
+        return maxDepth(root);
+    }
+
+    int setMaxDepth(BinaryNode* root){
         if (root == nullptr) { //base case
             return 0;
        }

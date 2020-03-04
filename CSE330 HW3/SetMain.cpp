@@ -40,21 +40,21 @@ int main() {
 	
 	const int size = 100; //store n elements in the vector/set
 	Vector<int> list;
-	populateList(list);
+	populateList(list,size);
 
 	Set<int> setA;
 	Set<int> setB;
 
-	fillSetA(setA);
-	fillSetB(setB);
+	fillSetA(list,setA);
+	fillSetB(list,setB);
 
 	cout << "Set A:\n";
 	setA.printTree();
 	cout << "Set B:\n";
 	setB.printTree();
 
-	int depthA = setA.maxDepth();
-	int depthB = setB.maxDepth();
+	int depthA = setA.getMaxDepth();
+	int depthB = setB.getMaxDepth();
 
 	cout << "\nThe Maximum depth of Set A is: " << depthA << endl;
 	cout << "\nThe Maximum depth of set B is: " << depthB << endl;
