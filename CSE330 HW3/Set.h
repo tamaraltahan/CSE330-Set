@@ -237,7 +237,7 @@ public:
     }
 
     int getMaxDepth() {
-        return maxDepth(root);
+        return setMaxDepth(root);
     }
 
     int setMaxDepth(BinaryNode* root){
@@ -245,8 +245,8 @@ public:
             return 0;
        }
         else {
-            int leftSubTree = maxDepth(root->left);
-            int rightSubTree = maxDepth(root->right);
+            int leftSubTree = setMaxDepth(root->left);
+            int rightSubTree = setMaxDepth(root->right);
 
             if (leftSubTree > rightSubTree)
                 return leftSubTree + 1;
@@ -322,7 +322,7 @@ private:
                 assert(t->left == nullptr &&
                     t->right == nullptr);
 
-                BinaryNode* oldNode = t
+                BinaryNode* oldNode = t;
                     delete oldNode;
                 t = nullptr;
             }

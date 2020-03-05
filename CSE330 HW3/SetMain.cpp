@@ -20,9 +20,7 @@ void fillSetA(const Vector<int>& list, Set<int>& set) { //between 3 and 36 and m
 		if (list[i] % 3 == 0 && list[i] >= 3 && list[i] <= 36) {
 			set.insert(list[i]);
 		}
-
 	}
-
 }
 
 void fillSetB(const Vector<int>& list, Set<int>& set) { //between 18 and 54 and multiple of 3
@@ -38,7 +36,7 @@ void fillSetB(const Vector<int>& list, Set<int>& set) { //between 18 and 54 and 
 int main() {
 
 	
-	const int size = 100; //store n elements in the vector/set
+	const int size = 200; //store n elements in the vector/set
 	Vector<int> list;
 	populateList(list,size);
 
@@ -49,9 +47,9 @@ int main() {
 	fillSetB(list,setB);
 
 	cout << "Set A:\n";
-	setA.printTree();
+	setA.printInternal();
 	cout << "Set B:\n";
-	setB.printTree();
+	setB.printInternal();
 
 	int depthA = setA.getMaxDepth();
 	int depthB = setB.getMaxDepth();
@@ -65,17 +63,17 @@ int main() {
 	Set<int> AdifB = setA.difference(setB);
 	Set<int> BdifA = setB.difference(setA);
 
-	cout << "Union set:\n";
-	unionSet.printTree();
+	cout << "\nUnion set:\n";
+	unionSet.printInternal();
 
 	cout << "Intersection Set:\n";
-	intersectionSet.printTree();
+	intersectionSet.printInternal();
 
 	cout << "Difference of A and B:\n";
-	AdifB.printTree();
+	AdifB.printInternal();
 
 	cout << "Difference of B and A:\n";
-	BdifA.printTree();
+	BdifA.printInternal();
 
 
 
