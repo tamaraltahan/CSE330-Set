@@ -34,9 +34,8 @@ void fillSetB(const Vector<int>& list, Set<int>& set) { //between 18 and 54 and 
 
 
 int main() {
-
 	
-	const int size = 200; //store n elements in the vector/set
+	const int size = 50; //store n elements in the vector/set
 	Vector<int> list;
 	populateList(list,size);
 

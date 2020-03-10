@@ -160,29 +160,19 @@ public:
 
     //HW Starts  * * * * * * * * * * * * * * * * * * * * * * * * * *
 
+
     Set<C> Union(Set<C> other) {
         Set<C> unionSet;
 
         iterator it1 = begin();
         iterator it2 = other.begin();
 
-        while (it1 != end() && it2 != other.end()) { //iterate over every element in both trees                            
-
-            if (*it1 == *it2) { //if both elements are the same, insert only one instance
-                if (!unionSet.contains(*it1)) {//only insert if no the element is not already included in the set
-                    unionSet.insert(*it1);
-                }
-            }
-            else { //check if either element is already included in the greater set, and if not, insert them
-                if (!unionSet.contains(*it1)) {
-                    unionSet.insert(*it1);
-                }
-
-                if (!unionSet.contains(*it2)) {
-                    unionSet.insert(*it2);
-                }
-            }
-            it1++; //iterate
+        while (it1 != end()) {
+            unionSet.insert(*it1);
+            it1++;
+        }
+        while (it2 != other.end()) {
+            unionSet.insert(*it2);
             it2++;
         }
 
@@ -197,42 +187,29 @@ public:
         iterator it1 = begin();
         iterator it2 = other.begin();
 
-        while (it1 != end() && it2 != other.end()) {
-            if (*it1 == *it2) { //if the elements are the same, then follow logic of union
-                if (!intersectionSet.contains(*it1)) {
-                    intersectionSet.insert(*it1);
-                }
-            }
-            //otherwise, we search the other set for the element to see if it is present in both sets
-            //if it is found, we confirm that the element is not already in the set, and if it is not, we insert it
-            //this results in 2 additional tree traversals
-            else if (other.contains(*it2)) {
-                if (!intersectionSet.contains(*it2)) {
-                    intersectionSet.insert(*it2);
-                }
+        while (it1 != end()) {
+            if (other.contains(*it1)) {
+                intersectionSet.insert(*it1);
             }
             it1++;
-            it2++;
-        }
-
+       }
         return intersectionSet;
     }
+
 
     Set<C> difference(Set<C> other) {
 
         Set<C> differenceSet;
 
         iterator it1 = begin();
-        iterator it2 = other.begin();
 
-        while (it1 != end() && it2 != other.end()) {
-
-            if (!contains(*it2)) {
-                differenceSet.insert(*it2);
+        while (it1 != end()) {
+            if (!other.contains(*it1)) {
+                differenceSet.insert(*it1);
             }
             it1++;
-            it2++;
         }
+
         return differenceSet;
     }
 
